@@ -21,12 +21,18 @@
             font-size: 25px;
             color : #C0262B;
         }
-        ul {
-            background-color:#E6E0DA;
+        .product{
+            margin-top: 10px;
+            margin-bottom: 10px;
+        }
+        .menu1 ul {
             text-align: center;
             border-top : 3px solid #C0262B;
             border-bottom: 3px solid #C0262B;
             padding: 10px;
+        }
+        ul li a:visited{
+            color: #C0262B;
         }
         ul li {
             display: inline;
@@ -38,6 +44,19 @@
         }
         ul li a:hover {
             color: #C0262B;
+        }
+        .menu2 {
+            display:inline-block;
+            border: 3px dashed #C0262B;
+            padding-top: 10px;
+            margin: 15px;
+        }
+        .menu2 ul{
+            padding-left: 0px;
+        }
+        button {
+            background-color: #00000000;
+            border: none;
         }
         footer {
             background-color: #C0262Bd1;
@@ -51,7 +70,7 @@
         <div class="row">
             <div class="col-xs-1"></div>
             <div class="col-xs-10 text-center">
-                <a href="#"><img src="LunchBoxLogo.png" width="300"/></a>
+                <a href="Menu.html"><img src="LunchBoxLogo.png" width="300"/></a>
             </div>
             <div class="col-md-1 user-head">
                 <a href="#"><span class="glyphicon glyphicon-user" aria-hidden="true"></span></a>
@@ -69,35 +88,45 @@
         </ul>
     </div>
 </div>
+<div class="container text-center">
+    <div class="menu2">
+        <ul>
+            <li><a href="#">밥</a></li>
+            <li><a href="#">반찬</a></li>
+            <li><a href="#">토핑</a></li>
+            <li><a href="#">간식</a></li>
+        </ul>
+    </div>
+</div>
 
 <div class="container">    
     <div class="factor text-center">
         <row>
-            <div class="col-xs-4 ">
+            <div class="col-xs-4 product">
                 <img src="LunchBoxLogo.png" width="210">
                 <p>제품명</p>
                 <p>가격</p>
                 <div>
-                <button>선택하기</button>
-                <button>즐겨찾기</button>
+                <button><img src="select.png" width=40/></button>
+                <button><img src="star.png" width=40 /></button>
                 </div>
             </div>
-            <div class="col-xs-4">
+            <div class="col-xs-4 product">
                 <img src="LunchBoxLogo.png" width="210">
-                                <p>제품명</p>
+                <p>제품명</p>
                 <p>가격</p>
                 <div>
-                <button>선택하기</button>
-                <button>즐겨찾기</button>
+                <button><img src="select.png" width=40/></button>
+                <button><img src="star.png" width=40 /></button>
                 </div>
             </div>
-            <div class="col-xs-4">
+            <div class="col-xs-4 product">
                 <img src="LunchBoxLogo.png" width="210">
-                                <p>제품명</p>
+                <p>제품명</p>
                 <p>가격</p>
                 <div>
-                <button>선택하기</button>
-                <button>즐겨찾기</button>
+                <button><img src="select.png" width=40/></button>
+                <button><img src="star.png" width=40 /></button>
                 </div>
             </div>
         </row>
@@ -120,17 +149,17 @@
           <p>
             이송이<br>
               <span class="
-glyphicon glyphicon-envelope"> elephant890@naver.com</span>
+glyphicon glyphicon-envelope"> SosSong@cbnu.ac.kr</span>
           </p>
           <p>
             최승혜<br>
               <span class="
-glyphicon glyphicon-envelope"> 승해 이메일 ^_^</span>
+glyphicon glyphicon-envelope"> Ssbbs2@cbnu.ac.kr</span>
           </p>
           <p>
             이주영<br>
               <span class="
-glyphicon glyphicon-envelope"> 영주 이메일 ^_^</span>
+glyphicon glyphicon-envelope"> DBAplus@cbnu.ac.kr</span>
           </p>
       </div>
   </row>

@@ -18,15 +18,17 @@
             right: 10px;
         }
         .user-head .glyphicon {
-            font-size: 20px;
+            font-size: 25px;
             color : #C0262B;
         }
         ul {
-            background-color:#E6E0DA;
             text-align: center;
             border-top : 3px solid #C0262B;
             border-bottom: 3px solid #C0262B;
             padding: 10px;
+        }
+        ul li a:visited{
+            color: #C0262B;
         }
         ul li {
             display: inline;
@@ -39,8 +41,41 @@
         ul li a:hover {
             color: #C0262B;
         }
+        .product{
+            margin-top: 10px;
+            margin-bottom: 10px;
+        }
+        .Cart{
+            margin-top: 30px;
+            margin-bottom: 30px;
+            color: #C0262B;
+            font-size: 2.1em;
+            font-weight: 800;
+            text-shadow:2px 3px pink;
+        }
+        .Box-total{
+            display:inline-block;
+            border: 3px dashed #C0262B;
+            padding: 20px 40px 20px 40px;
+            margin-bottom: 40px;
+        }
+        button {
+            background-color: #00000000;
+            border: none;
+        }
+        .buy{
+            font-size: 1.4em;
+            font-weight: 600;
+            color: white;
+            background-color: #C0262BD1;
+            width: 10em;
+        }
+        .buy:hover{
+            color: #C0262B;
+            background-color: #00000000;
+        }
         footer {
-            background-color: #C0262Bd1;
+            background-color: #C0262BD1;
             color: white;
         }
     </style>
@@ -54,7 +89,7 @@
                 <a href="#"><img src="LunchBoxLogo.png" width="300"/></a>
             </div>
             <div class="col-md-1 user-head">
-                <a href="#"><span class="glyphicon glyphicon-user" aria-hidden="true"></span></a>
+                <a href="Menu.html"><span class="glyphicon glyphicon-user" aria-hidden="true"></span></a>
                 <a href="#"><span class="glyphicon glyphicon-log-out" aria-hidden="true"></span></a>
             </div>
         </div>
@@ -70,17 +105,54 @@
     </div>
 </div>
 
-<div class="container">
+<div class="container text-center">
+    <p class="Cart">"Shopping Cart"</p>
+    <div class="Box-total">
+        <p>$ Total Price </p>
+        <button class="buy">주문하기</button>
+    </div>
+    <br>
+    <row>
+        <div class="col-xs-4 product">
+            <img src="LunchBoxLogo.png" width="210">
+            <p>제품명</p>
+            <p>가격</p>
+            <div>
+            <button><img src="delete.png" width=40/></button>
+            <button><img src="star.png" width=40 /></button>
+            </div>
+        </div>
+                <div class="col-xs-4 product">
+            <img src="LunchBoxLogo.png" width="210">
+            <p>제품명</p>
+            <p>가격</p>
+            <div>
+            <button><img src="delete.png" width=40/></button>
+            <button><img src="star.png" width=40 /></button>
+            </div>
+        </div>
+                <div class="col-xs-4 product">
+            <img src="LunchBoxLogo.png" width="210">
+            <p>제품명</p>
+            <p>가격</p>
+            <div>
+            <button><img src="delete.png" width=40/></button>
+            <button><img src="star.png" width=40 /></button>
+            </div>
+        </div>
+                <div class="col-xs-4 product">
+            <img src="LunchBoxLogo.png" width="210">
+            <p>제품명</p>
+            <p>가격</p>
+            <div>
+            <button><img src="delete.png" width=40/></button>
+            <button><img src="star.png" width=40 /></button>
+            </div>
+        </div>
+    </row>
     
-    <h3>Here is contents</h3>
-    <p>막막하군</p>
-    
-    
-    
-    
-    
-</div>
-    
+</div> 
+        
 <footer class="container">
   <row>
       <div class="col-md-8">
@@ -93,17 +165,17 @@
           <p>
             이송이<br>
               <span class="
-glyphicon glyphicon-envelope"> elephant890@naver.com</span>
+glyphicon glyphicon-envelope"> SosSong@cbnu.ac.kr</span>
           </p>
           <p>
             최승혜<br>
               <span class="
-glyphicon glyphicon-envelope"> 승해 이메일 ^_^</span>
+glyphicon glyphicon-envelope"> Ssbbs2@cbnu.ac.kr</span>
           </p>
           <p>
             이주영<br>
               <span class="
-glyphicon glyphicon-envelope"> 영주 이메일 ^_^</span>
+glyphicon glyphicon-envelope"> DBAplus@cbnu.ac.kr</span>
           </p>
       </div>
   </row>
