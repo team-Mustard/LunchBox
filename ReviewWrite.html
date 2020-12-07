@@ -41,41 +41,24 @@
         ul li a:hover {
             color: #C0262B;
         }
-        .user-border{
-            margin-top: 10px;
-            padding-top: 10px;
-            padding-bottom: 10px;
-            border-top: 10px solid #C0262B;
-            border-bottom: 3px solid #C0262B;    
+        textarea{
+            width: 100%;
+            height: 100px;
+            align-content: center;
         }
-        .user{
-            border-top: 3px dashed #C0262B;
-            border-bottom: 3px dashed #C0262B; 
-        }
-        .myBox{
-            margin-top: 30px;
-            margin-bottom: 30px;
-            padding-left: 5%;
-            color: #C0262B;
-            font-size: 2.1em;
-            font-weight: 800;
-            text-shadow:2px 3px pink;
-        }
-        .Box{
-            padding-top: 10px;
-            padding-bottom: 10px;
-        }
-        button {
-            background-color: #00000000;
-            border: none;
-        }
-        .review{
-            color: #C0262BD1;
+        button{
+            float: right;
+            padding: 10px 40px 10px 40px;
             font-weight: bold;
-            border: 2px solid #C0262BD1;
-            border-radius: 8px;
-            padding: 5px 10px 5px 10px;
-            margin: 10px 0px 10px 0px;
+            background-color: #fa5a5a;
+            color: white;
+            border: 1px solid #C0262Bd1;
+            border-radius: 12px;
+            margin-bottom: 10px;
+        }
+        button:hover{
+            color: #fa5a5a;
+            background-color: white;
         }
         footer {
             background-color: #C0262Bd1;
@@ -102,71 +85,19 @@
         <ul>
             <li><a href="Menu.html">주문</a></li>
             <li><a href="Cart.html">장바구니</a></li>
-            <li><a href="Review.html">리뷰</a></li>
-            <li><a href="#">마이페이지</a></li>
+            <li><a href="#">리뷰</a></li>
+            <li><a href="My.html">마이페이지</a></li>
         </ul>
     </div>
 </div>
-    
 
 <div class="container">
-    <div class="user-border">
-        <div class="text-center user">
-            <h3>사용자 이름</h3>
-            <p>등급</p>
-            <p>20% 할인적용!</p>
-        </div>
-    </div>
     
-    
-    
-    
-    
-    <div>
-        <row>
-        <div class="col-xs-6">
-            <p class="myBox">"My Lunch-Box"</p>
-            <row class="Box">
-                <div class="Box text-center">
-                    <img src="LunchBoxLogo.png" height="120px"/><br>
-                    <button><img src="select.png" width=40/></button>
-                    <button><img src="delete.png" width=30 /></button>
-                    <h4>BoxName</h4>
-                    <p>$ Total Price</p>
-                    <p>무슨 재료 들어가는지 여기에 넣어주세요 ^0^♥</p>
-                </div>
-            </row>
-            
-        </div>
-        <div class="col-xs-6">
-            <p class="myBox">"My Orders"</p>
-            <row class="Box">
-                <div class="Box text-center">
-                    <img src="LunchBoxLogo.png" height="120px"/><br>
-                    <button class="review">Review Write</button>
-                    <p>$ Total Price</p>
-                    <p>구매날짜</p>
-                    <p>무슨 재료 들어가는지 여기에 넣어주세요 ^0^♥</p>
-                </div>
-            </row>
-            <row class="Box">
-                <div class="Box text-center">
-                    <img src="LunchBoxLogo.png" height="120px"/><br>
-                    <button class="review">Review Write</button>
-                    <p>$ Total Price</p>
-                    <p>구매날짜</p>
-                    <p>무슨 재료 들어가는지 여기에 넣어주세요 ^0^♥</p>
-                </div>
-            </row>
-        </div>
-        </row>
-    </div>
+    <h4>"food list in box 밥 계란말이 김 어쩌구 저쩌구"</h4>
+    <h5>After writing your review, press the Submit button.</h5>
+    <textarea placeholder="190자 이내, 줄바꿈 3번 이내로 작성해주세요."></textarea><br>
+    <button type="submit">Submit</button>
         
-    
-    
-    
-    
-    
 </div>
     
 <footer class="container">
