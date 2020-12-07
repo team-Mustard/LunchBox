@@ -21,10 +21,6 @@
             font-size: 25px;
             color : #C0262B;
         }
-        .product{
-            margin-top: 10px;
-            margin-bottom: 10px;
-        }
         .menu1 ul {
             text-align: center;
             border-top : 3px solid #C0262B;
@@ -45,18 +41,26 @@
         ul li a:hover {
             color: #C0262B;
         }
-        .menu2 {
-            display:inline-block;
-            border: 3px dashed #C0262B;
-            padding-top: 10px;
-            margin: 30px;
+        .bg-image {
+            filter: blur(5px);
+            -webkit-filter: blur(5px);
         }
-        .menu2 ul{
-            padding-left: 0px;
+        .bg-text {
+          background-color: rgba(0,0,0, 0.35);
+          color: white;
+          font-weight: bold;
+          border: 3px solid #f1f1f1;
+          position: absolute;
+          top: 450px;
+          left: 50%;
+          transform: translate(-50%, -50%);
+          z-index: 2;
+          width:300px;
+          padding: 20px;
         }
-        button {
-            background-color: #00000000;
-            border: none;
+        input{
+            margin-bottom: 10px;
+            font-weight: 100;
         }
         footer {
             background-color: #C0262Bd1;
@@ -88,54 +92,23 @@
         </ul>
     </div>
 </div>
-<div class="container text-center">
-    <div class="menu2">
-        <ul>
-            <li><a href="#">밥</a></li>
-            <li><a href="#">반찬</a></li>
-            <li><a href="#">토핑</a></li>
-            <li><a href="#">간식</a></li>
-        </ul>
-    </div>
-</div>
 
-<div class="container">    
-    <div class="factor text-center">
-        <row>
-            <div class="col-xs-4 product">
-                <img src="LunchBoxLogo.png" width="210">
-                <p style="margin-top: 15px;">제품명</p>
-                <p>가격</p>
-                <div>
-                <button><img src="select.png" width=40/></button>
-                <button><img src="star.png" width=40 /></button>
-                </div>
-            </div>
-            <div class="col-xs-4 product">
-                <img src="LunchBoxLogo.png" width="210">
-                <p style="margin-top: 15px;">제품명</p>
-                <p>가격</p>
-                <div>
-                <button><img src="select.png" width=40/></button>
-                <button><img src="star.png" width=40 /></button>
-                </div>
-            </div>
-            <div class="col-xs-4 product">
-                <img src="LunchBoxLogo.png" width="210">
-                <p style="margin-top: 15px;">제품명</p>
-                <p>가격</p>
-                <div>
-                <button><img src="select.png" width=40/></button>
-                <button><img src="star.png" width=40 /></button>
-                </div>
-            </div>
-        </row>
-        
-    </div>
-    
-    
-    
+<div class="container text-center">
+    <img src="box.png" class="bg-image" />
+
+<div class="bg-text">
+    <h1>LOGIN</h1>
+    <form>
+        <input type="text" placeholder="Enter ID" /><br>
+        <input type="password" placeholder="Enter password" /><br>
+        <button type="submit">Login</button>
+    </form>
 </div>
+    
+    </div>    
+
+    
+    
     
 <footer class="container">
   <row>
