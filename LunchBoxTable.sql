@@ -1,0 +1,95 @@
+CREATE SCHEMA project;
+
+CREATE TABLE CATEGORY
+	(CategoryID INTEGER NOT NULL,
+     CategoryName VARCHAR(10),
+     PRIMARY KEY(CategoryID));
+     
+CREATE TABLE FOOD
+	(FoodID INTEGER NOT NULL,
+     FoodName VARCHAR(10),
+     FoodPrice INTEGER,
+     FoodImage VARCHAR(25),
+     CategoryID INTEGER,
+     PRIMARY KEY(FoodID),
+     FOREIGN KEY(CategoryID) REFERENCES CATEGORY(CategoryID));
+     
+CREATE TABLE STAR
+	(StarID INTEGER NOT NULL,
+     FoodID INTEGER,
+     PRIMARY KEY(StarID),
+     FOREIGN KEY(FoodID) REFERENCES FOOD(FoodID));
+     
+
+     
+CREATE TABLE BOX
+	(BoxID INTEGER NOT NULL,
+     TotalPrice INTEGER,
+     FoodID INTEGER,
+     PRIMARY KEY(BoxID),
+     FOREIGN KEY(FoodID) REFERENCES FOOD(FoodID));
+
+CREATE TABLE TIER
+     (TierID INTEGER NOT NULL,
+      TierName VARCHAR(10),
+      TierDiscount INTEGER,
+      PRIMARY KEY(TierID));
+      
+CREATE TABLE CUSTOMER
+	(CustomerID VARCHAR(10) NOT NULL,
+     CustomerPW VARCHAR(18),
+     CustomerTotalPrice INTEGER,
+     TierID INTEGER,
+     City VARCHAR(4),
+     Dong VARCHAR(4),
+     Ku VARCHAR(3),
+     PRIMARY KEY(CustomerID),
+     FOREIGN KEY(TierID) REFERENCES Tier(TierID));
+     
+CREATE TABLE CART
+	(CartID INTEGER NOT NULL,
+     CartDate DATETIME,
+     CartStatus BOOLEAN,
+     BoxID INTEGER,
+     CustomerID VARCHAR(10),
+     PRIMARY KEY(CartID),
+     FOREIGN KEY(BoxID) REFERENCES Box(BoxID),
+     FOREIGN KEY(CustomerID) REFERENCES CUSTOMER(CustomerID));
+
+CREATE TABLE BOOKMARK
+	(BookID INTEGER NOT NULL,
+     BookName VARCHAR(10),
+     CartID INTEGER,
+     PRIMARY KEY(BookID),
+     FOREIGN KEY(CartID) REFERENCES CART(CartID));
+     
+CREATE TABLE REVIEW
+	(ReviewID INTEGER NOT NULL,
+     ReviewDate DATETIME,
+     ReviewContent TEXT,
+     CartID INTEGER,
+     PRIMARY KEY(ReviewID),
+     FOREIGN KEY(CartID) REFERENCES CART(CartID));
+     
+
+
+/*
+밥 6개 1~6
+육류 13개 7~19               
+채소 17개 20~ 36         
+해산물 10개 37~46      
+토핑 6개  47~52          
+간식 20개 53~ 72
+*/
+
+DROP TABLE REVIEW;
+DROP TABLE BOOKMARK;
+DROP TABLE CART;
+DROP TABLE CUSTOMER;
+DROP TABLE TIER;
+DROP TABLE BOX;
+DROP TABLE CATEGORY;
+DROP TABLE STAR;
+DROP TABLE FOOD;
+DROP SCHEMA project;
+     
