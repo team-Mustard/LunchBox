@@ -107,14 +107,16 @@
 	
 
 <%
+	int CategoryID = 1;
    Class.forName("com.mysql.jdbc.Driver");
    Connection conn = DriverManager.getConnection("jdbc:mysql://localhost:3306/project","root","root");
    Statement stmt = conn.createStatement();
-   String sqlstr = "SELECT * FROM food WHERE CategoryID = 1";
+   String sqlstr = "SELECT * FROM food WHERE CategoryID = " + CategoryID;
    stmt = conn.prepareStatement(sqlstr);
    ResultSet rset = stmt.executeQuery(sqlstr);
 %>
 
+<%-- 여기 바로 밑 div가 육류 --%>
 <div class="container">    
     <div class="factor text-center">
         <row>
@@ -140,12 +142,78 @@
         </row>
         
     </div>
-    <%	rset.close();
+    
+    <%
+	CategoryID += 1;
+   sqlstr = "SELECT * FROM food WHERE CategoryID = " + CategoryID;
+   stmt = conn.prepareStatement(sqlstr);
+   rset = stmt.executeQuery(sqlstr);
+	%>
+
+<%-- 여기 바로 밑 div가 채소 --%>
+    <div class="container">    
+    <div class="factor text-center">
+        <row>
+        <%while(rset.next())
+        {%>
+            <div class="col-xs-4 ">
+			 <%
+		   		String foodName = rset.getString("foodName");
+		 		int foodPrice = rset.getInt("foodPrice");
+				String foodImage = rset.getString("foodImage"); %>
+				<img src = <%=foodImage %> width = "200px" height="auto" align="middle"><br/>
+				<p><%= foodName  %></p>
+		  		<p><%= foodPrice %></p>
+
+                <div>
+                <button><img src="select.png" width=40/></button>
+                <button><img src="star.png" width=40 /></button>
+                </div>
+            </div>
+            <%} %>
+			
+            </div>
+        </row>
+    </div>
+    
+    <%
+	CategoryID += 1;
+   sqlstr = "SELECT * FROM food WHERE CategoryID = " + CategoryID;
+   stmt = conn.prepareStatement(sqlstr);
+   rset = stmt.executeQuery(sqlstr);
+	%>
+
+<%-- 여기 바로 밑 div가 해산물 --%>
+    <div class="container">    
+    <div class="factor text-center">
+        <row>
+        <%while(rset.next())
+        {%>
+            <div class="col-xs-4 ">
+			 <%
+		   		String foodName = rset.getString("foodName");
+		 		int foodPrice = rset.getInt("foodPrice");
+				String foodImage = rset.getString("foodImage"); %>
+				<img src = <%=foodImage %> width = "200px" height="auto" align="middle"><br/>
+				<p><%= foodName  %></p>
+		  		<p><%= foodPrice %></p>
+
+                <div>
+                <button><img src="select.png" width=40/></button>
+                <button><img src="star.png" width=40 /></button>
+                </div>
+            </div>
+            <%} %>
+			
+            </div>
+        </row>
+    </div>
+    
+    
+     <%	rset.close();
 		stmt.close();
 		conn.close(); %>
-    
-    
-    
+		    
 <footer class="container">
   <row>
       <div class="col-md-8">
