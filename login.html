@@ -42,8 +42,9 @@
             color: #C0262B;
         }
         .bg-image {
-            filter: blur(5px);
-            -webkit-filter: blur(5px);
+            z-index:3;
+            position: absolute;
+            transform: translate(-50%, 20%);
         }
         .bg-text {
           background-color: rgba(0,0,0, 0.35);
@@ -53,7 +54,7 @@
           position: absolute;
           top: 450px;
           left: 50%;
-          transform: translate(-50%, -50%);
+          transform: translate(-50%, -47%);
           z-index: 2;
           width:300px;
           padding: 20px;
@@ -61,8 +62,10 @@
         input{
             margin-bottom: 10px;
             font-weight: 100;
+            color: black;
         }
         footer {
+            margin-top: 365px;
             background-color: #C0262Bd1;
             color: white;
         }
@@ -85,25 +88,25 @@
 
     <div class="menu1">
         <ul>
-            <li><a href="#">주문</a></li>
-            <li><a href="Cart.html">장바구니</a></li>
-            <li><a href="Review.html">리뷰</a></li>
-            <li><a href="My.html">마이페이지</a></li>
+            <li><a href="Menu.jsp">주문</a></li>
+            <li><a href="Cart.jsp">장바구니</a></li>
+            <li><a href="Review.jsp">리뷰</a></li>
+            <li><a href="My.jsp">마이페이지</a></li>
         </ul>
     </div>
 </div>
 
 <div class="container text-center">
-    <img src="box.png" class="bg-image" />
+    <img src="ribbon.png" class="bg-image" width="400px;"/>
 
-<div class="bg-text">
-    <h1>LOGIN</h1>
-    <form>
-        <input type="text" placeholder="Enter ID" /><br>
-        <input type="password" placeholder="Enter password" /><br>
-        <button type="submit">Login</button>
-    </form>
-</div>
+    <div class="bg-text">
+        <h1>LOGIN</h1>
+        <form action="Login_check.jsp" method="post">
+            <input type="text" name = "id" placeholder="Enter ID" /><br>
+            <input type="password" name = "pw" placeholder="Enter password" /><br>
+            <input type="submit" name = "로그인">
+        </form>
+    </div>
     
     </div>    
 

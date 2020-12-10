@@ -1,6 +1,8 @@
 <%@page import="java.sql.*,java.util.*"%>
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
+<%@ page session = "true" %>
+   
 <!DOCTYPE html>
 <html>
 <head>
@@ -30,17 +32,13 @@
    
    
    if(rs.next()){
-      String PW = rs.getString("CustomerPW");
-      if(pw.equals(PW)){
+	   String PW = rs.getString("CustomerPW");
+	   if(pw.equals(PW)){
+		   
          session.setAttribute("id", id);
-         %>
+         out.println("로그인 성공");
          
-         <script>
-            alert('로그인 성공');
-         </script>
          
-         <%
-         response.sendRedirect("Menu.jsp");
       }else{
          %>
          <script>
@@ -59,10 +57,11 @@
       <%
    }
   
-   
+   	response.sendRedirect("Menu.jsp");
     con.close();
     pstmt.close();
     rs.close();
+    
     
     %> 
 </body>
