@@ -6,7 +6,7 @@
 <%@ page import="java.text.SimpleDateFormat" %>
 <%
 	Class.forName("com.mysql.jdbc.Driver");
-	Connection conn = DriverManager.getConnection("jdbc:mysql://localhost:3306/project","root","root");
+	Connection conn = DriverManager.getConnection("jdbc:mysql://localhost:3306/project","root","1234");
 	String CustomerID = (String) session.getAttribute("id");
 	int food1ID = Integer.parseInt(request.getParameter("food1ID"));
 	int food2ID = Integer.parseInt(request.getParameter("food2ID"));

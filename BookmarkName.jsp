@@ -106,11 +106,11 @@
         <div class="row">
             <div class="col-md-1"></div>
             <div class="col-md-10 text-center">
-                <a href="#"><img src="LunchBoxLogo.png" width="300"/></a>
+                <a href="Menu.jsp"><img src="LunchBoxLogo.png" width="300"/></a>
             </div>
             <div class="col-md-1 user-head">
-                <a href="login.html"><span class="glyphicon glyphicon-user" aria-hidden="true"></span></a>
-                <a href="#"><span class="glyphicon glyphicon-log-out" aria-hidden="true"></span></a>
+                <a href="Login.html"><span class="glyphicon glyphicon-user" aria-hidden="true"></span></a>
+                <a href="Logout.jsp"><span class="glyphicon glyphicon-log-out" aria-hidden="true"></span></a>
             </div>
         </div>
     </nav>

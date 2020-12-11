@@ -10,7 +10,7 @@
    int CustomerTotalPrice = 0;
    int boxTotalPrice = Integer.parseInt(request.getParameter("TotalPrice"));
    Class.forName("com.mysql.jdbc.Driver");
-   Connection conn = DriverManager.getConnection("jdbc:mysql://localhost:3306/project","root","root");
+   Connection conn = DriverManager.getConnection("jdbc:mysql://localhost:3306/project","root","1234");
    String CustomerID = (String) session.getAttribute("id");
    PreparedStatement buyStmt = null;
    PreparedStatement customerStmt = null;

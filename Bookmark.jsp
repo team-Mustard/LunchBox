@@ -11,7 +11,7 @@
 	int CartID = Integer.parseInt(request.getParameter("CartID"));
 	String BookName = request.getParameter("BookName");
 	Class.forName("com.mysql.jdbc.Driver");
-	Connection conn = DriverManager.getConnection("jdbc:mysql://localhost:3306/project","root","root");
+	Connection conn = DriverManager.getConnection("jdbc:mysql://localhost:3306/project","root","1234");
 
 	PreparedStatement BookStmt = null;
 	

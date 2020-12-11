@@ -23,7 +23,7 @@
    ResultSet rs = null;
    Class.forName("com.mysql.jdbc.Driver");
    
-   con = DriverManager.getConnection("jdbc:mysql://localhost:3306/project", "root", "root");
+   con = DriverManager.getConnection("jdbc:mysql://localhost:3306/project", "root", "1234");
    String sql = "SELECT * FROM Customer WHERE CustomerID = '" + id + "'";
    
    Statement pstmt = con.createStatement();

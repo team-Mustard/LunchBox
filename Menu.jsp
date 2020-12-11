@@ -77,8 +77,8 @@
                 <a href="#"><img src="LunchBoxLogo.png" width="300"/></a>
             </div>
             <div class="col-md-1 user-head">
-                <a href="login.html"><span class="glyphicon glyphicon-user" aria-hidden="true"></span></a>
-                <a href="#"><span class="glyphicon glyphicon-log-out" aria-hidden="true"></span></a>
+                <a href="Login.html"><span class="glyphicon glyphicon-user" aria-hidden="true"></span></a>
+                <a href="Logout.jsp"><span class="glyphicon glyphicon-log-out" aria-hidden="true"></span></a>
             </div>
         </div>
     </nav>
@@ -103,13 +103,11 @@
             <li><a href="Star.jsp">즐겨찾기</a></li>
         </ul>
     </div>
-</div>
-
-	
+</div>	
 
 <%
    Class.forName("com.mysql.jdbc.Driver");
-   Connection conn = DriverManager.getConnection("jdbc:mysql://localhost:3306/project","root","root");
+   Connection conn = DriverManager.getConnection("jdbc:mysql://localhost:3306/project","root","1234");
    String CustomerID = (String) session.getAttribute("id");
    Statement stmt = conn.createStatement();
    String sqlstr = "SELECT * FROM food WHERE CategoryID = 4";
@@ -175,17 +173,17 @@
           <p>
             이송이<br>
               <span class="
-glyphicon glyphicon-envelope"> elephant890@naver.com</span>
+glyphicon glyphicon-envelope"> SosSong@cbnu.ac.kr</span>
           </p>
           <p>
             최승혜<br>
               <span class="
-glyphicon glyphicon-envelope"> 승해 이메일 ^_^</span>
+glyphicon glyphicon-envelope"> Ssbbs2@cbnu.ac.kr</span>
           </p>
           <p>
             이주영<br>
               <span class="
-glyphicon glyphicon-envelope"> 영주 이메일 ^_^</span>
+glyphicon glyphicon-envelope"> DBAplus@cbnu.ac.kr</span>
           </p>
       </div>
   </row>

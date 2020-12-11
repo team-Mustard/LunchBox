@@ -7,7 +7,7 @@
 	int foodID = Integer.parseInt(request.getParameter("foodID"));
 	String CustomerID = (String) session.getAttribute("id");
 	Class.forName("com.mysql.jdbc.Driver");
-	Connection conn = DriverManager.getConnection("jdbc:mysql://localhost:3306/project","root","root");
+	Connection conn = DriverManager.getConnection("jdbc:mysql://localhost:3306/project","root","1234");
 
 	PreparedStatement starStmt = null;
 	

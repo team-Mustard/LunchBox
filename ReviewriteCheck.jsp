@@ -20,7 +20,7 @@
    String Review = request.getParameter("review");
    int cartID = Integer.parseInt(request.getParameter("cartID"));
    Class.forName("com.mysql.jdbc.Driver");
-   Connection conn = DriverManager.getConnection("jdbc:mysql://localhost:3306/project", "root", "root");
+   Connection conn = DriverManager.getConnection("jdbc:mysql://localhost:3306/project", "root", "1234");
    
    Date nowTime = new Date();
    

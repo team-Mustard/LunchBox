@@ -115,7 +115,7 @@ request.setCharacterEncoding("UTF-8");
    int boxID = Integer.parseInt(request.getParameter("boxID"));
    int cartID = Integer.parseInt(request.getParameter("cartID"));
    Class.forName("com.mysql.jdbc.Driver");
-   Connection conn = DriverManager.getConnection("jdbc:mysql://localhost:3306/project","root","root");
+   Connection conn = DriverManager.getConnection("jdbc:mysql://localhost:3306/project","root","1234");
    String sqlstr = "SELECT * FROM box WHERE boxID=" + boxID;
    Statement stmt = conn.createStatement();
    stmt = conn.prepareStatement(sqlstr);

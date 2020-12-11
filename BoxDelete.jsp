@@ -10,7 +10,7 @@
 	int FoodPrice = Integer.parseInt(request.getParameter("foodPrice"));
 	String CustomerID = (String) session.getAttribute("id");
 	int cartBoxID = 0;
-	Connection conn = DriverManager.getConnection("jdbc:mysql://localhost:3306/project","root","root");
+	Connection conn = DriverManager.getConnection("jdbc:mysql://localhost:3306/project","root","1234");
 	
 	
 	Statement cartStmt = conn.createStatement();

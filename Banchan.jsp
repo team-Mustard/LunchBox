@@ -55,13 +55,34 @@
             padding-top: 10px;
             margin: 15px;
         }
-        .menu2 ul{
+        .menu2 ul, .menu3 ul{
             padding-left: 0px;
+        }
+        h2 a{
+        	color: #C0262B;
+        }
+        h2 a:hover{
+        	text-decoration: none;
+        	color: #C0262B; 
         }
         button {
             background-color: #ffffffff;
             border: none;
         }
+        #TopBtn {
+		  position: fixed;
+		  bottom: 5%;
+		  right: 5%;
+		  z-index: 99;
+		  font-size: 18px;
+		  border: none;
+		  outline: none;
+		  background-color: red;
+		  color: white;
+		  cursor: pointer;
+		  padding: 15px;
+		  border-radius: 4px;
+		}
         footer {
             background-color: #C0262Bd1;
             color: white;
@@ -69,20 +90,21 @@
     </style>
 </head>
 <body>
+<a name="Top"></a>
+<a id="TopBtn" href="#Top">Top</a>
 <div class="container top">
     <nav class="navbar navbar-custom">
         <div class="row">
             <div class="col-xs-1"></div>
             <div class="col-xs-10 text-center">
-                <a href="Menu.html"><img src="LunchBoxLogo.png" width="300"/></a>
+                <a href="Menu.jsp"><img src="LunchBoxLogo.png" width="300"/></a>
             </div>
             <div class="col-md-1 user-head">
-                <a href="login.html"><span class="glyphicon glyphicon-user" aria-hidden="true"></span></a>
-                <a href="#"><span class="glyphicon glyphicon-log-out" aria-hidden="true"></span></a>
+                <a href="Login.html"><span class="glyphicon glyphicon-user" aria-hidden="true"></span></a>
+                <a href="Logout.jsp"><span class="glyphicon glyphicon-log-out" aria-hidden="true"></span></a>
             </div>
         </div>
     </nav>
-
     <div class="menu1">
         <ul>
             <li><a href="#">주문</a></li>
@@ -105,14 +127,22 @@
     </div>
 </div>
 
-	
+<div class="container text-center">
+    <div class="menu3">
+        <ul>
+            <li><a href="#meat">육류</a></li>
+            <li><a href="#veggi">채소</a></li>
+            <li><a href="#sea">해산물</a></li>
+        </ul>
+    </div>
+</div>	
 
 <%
 	String CustomerID = (String) session.getAttribute("id");
 
 	int CategoryID = 1;
   	Class.forName("com.mysql.jdbc.Driver");
-   	Connection conn = DriverManager.getConnection("jdbc:mysql://localhost:3306/project","root","root");
+   	Connection conn = DriverManager.getConnection("jdbc:mysql://localhost:3306/project","root","1234");
    	Statement stmt = conn.createStatement();
    	String sqlstr = "SELECT * FROM food WHERE CategoryID = " + CategoryID;
    	stmt = conn.prepareStatement(sqlstr);
@@ -130,6 +160,7 @@
 <%-- 여기 바로 밑 div가 육류 --%>
 <div class="container">    
     <div class="factor text-center">
+    <h2><a name="meat">육류</a></h2>
         <row>
         <%while(rset.next())
         {%>
@@ -172,6 +203,7 @@
 <%-- 여기 바로 밑 div가 채소 --%>
     <div class="container">    
     <div class="factor text-center">
+    <h2><a name="veggi">채소</a></h2>
         <row>
         <%while(rset.next())
         {%>
@@ -212,6 +244,7 @@
 <%-- 여기 바로 밑 div가 해산물 --%>
     <div class="container">    
     <div class="factor text-center">
+    <h2><a name="sea">해산물</a></h2>
         <row>
         <%while(rset.next())
         {%>
@@ -259,19 +292,18 @@
           <p>
             이송이<br>
               <span class="
-glyphicon glyphicon-envelope"> elephant890@naver.com</span>
+glyphicon glyphicon-envelope"> SosSong@cbnu.ac.kr</span>
           </p>
           <p>
             최승혜<br>
               <span class="
-glyphicon glyphicon-envelope"> 승해 이메일 ^_^</span>
+glyphicon glyphicon-envelope"> Ssbbs2@cbnu.ac.kr</span>
           </p>
           <p>
             이주영<br>
               <span class="
-glyphicon glyphicon-envelope"> 영주 이메일 ^_^</span>
+glyphicon glyphicon-envelope"> DBAplus@cbnu.ac.kr</span>
           </p>
-      </div>
   </row>
 </footer>
 </body>
