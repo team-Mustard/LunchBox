@@ -72,12 +72,12 @@
 <div class="container top">
     <nav class="navbar navbar-custom">
         <div class="row">
-            <div class="col-xs-1"></div>
-            <div class="col-xs-10 text-center">
-                <a href="Menu.html"><img src="LunchBoxLogo.png" width="300"/></a>
+            <div class="col-md-1"></div>
+            <div class="col-md-10 text-center">
+                <a href="#"><img src="LunchBoxLogo.png" width="300"/></a>
             </div>
             <div class="col-md-1 user-head">
-                <a href="#"><span class="glyphicon glyphicon-user" aria-hidden="true"></span></a>
+                <a href="login.html"><span class="glyphicon glyphicon-user" aria-hidden="true"></span></a>
                 <a href="#"><span class="glyphicon glyphicon-log-out" aria-hidden="true"></span></a>
             </div>
         </div>
@@ -85,10 +85,10 @@
 
     <div class="menu1">
         <ul>
-            <li><a herf="#">주문</a></li>
-            <li><a herf="Cart.html">장바구니</a></li>
-            <li><a herf="Review.html">리뷰</a></li>
-            <li><a herf="My.html">마이페이지</a></li>
+            <li><a href="#">주문</a></li>
+            <li><a href="Cart.jsp">장바구니</a></li>
+            <li><a href="Review.jsp">리뷰</a></li>
+            <li><a href="My.jsp">마이페이지</a></li>
         </ul>
     </div>
 </div>
@@ -100,6 +100,7 @@
             <li><a href="Banchan.jsp">반찬</a></li>
             <li><a href="Topping.jsp">토핑</a></li>
             <li><a href="Snack.jsp">간식</a></li>
+            <li><a href="Star.jsp">즐겨찾기</a></li>
         </ul>
     </div>
 </div>
@@ -109,12 +110,21 @@
 <%
    Class.forName("com.mysql.jdbc.Driver");
    Connection conn = DriverManager.getConnection("jdbc:mysql://localhost:3306/project","root","root");
+   String CustomerID = (String) session.getAttribute("id");
    Statement stmt = conn.createStatement();
    String sqlstr = "SELECT * FROM food WHERE CategoryID = 4";
    stmt = conn.prepareStatement(sqlstr);
    ResultSet rset = stmt.executeQuery(sqlstr);
 %>
-
+<script>
+   function starBtn(){
+      alert('즐겨찾는 반찬에 추가되었습니다.');
+   }
+   
+   function cartBtn(){
+	   alert('장바구니에 추가되었습니다.');
+   }
+</script>
 <div class="container">    
     <div class="factor text-center">
         <row>
@@ -124,15 +134,22 @@
 			 <%
 		   		String foodName = rset.getString("foodName");
 		 		int foodPrice = rset.getInt("foodPrice");
+				String foodID = rset.getString("foodID");
 				String foodImage = rset.getString("foodImage"); %>
 				<img src = <%=foodImage %> width = "200px" height="auto" align="middle"><br/>
 				<p><%= foodName  %></p>
 		  		<p><%= foodPrice %></p>
 
-                <div>
-                <button><img src="select.png" width=40/></button>
-                <button><img src="star.png" width=40 /></button>
-                </div>
+                <form action = "Box.jsp" method="post" style = "display:inline">
+					<input type="hidden" name = "foodID"  value="<%= foodID %>" >
+			  		<input type="hidden" name = "foodPrice"  value="<%= foodPrice %>" >
+			  		<input onclick="javascript:cartBtn()" type="Image" name = "Cart" value="선택하기" src = "select.png" width = 40 >
+		  		</form>
+		  		<form action = "StarAdd.jsp" method="post" style = "display:inline">
+					<input type="hidden" name = "foodID"  value="<%= foodID %>" >
+					<input type="hidden" name = "customerID"  value="<%= CustomerID %>" >
+					<input onclick="javascript:starBtn()" type="Image" name = "Star" value="즐겨찾기" src = "star.png" width = 40 >
+				</form>
             </div>
             <%} %>
 			

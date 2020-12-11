@@ -97,49 +97,61 @@
     <div class="menu2">
         <ul>
             <li><a href="Menu.jsp">밥</a></li>
-            <li><a href=" ">반찬</a></li>
+            <li><a href="Banchan.jsp">반찬</a></li>
             <li><a href="Topping.jsp">토핑</a></li>
             <li><a href="Snack.jsp">간식</a></li>
-            <li><a href="Star.jsp">즐겨찾기</a></li>
+            <li><a href="">즐겨찾기</a></li>
         </ul>
     </div>
 </div>
 
-	
-
-<%
-	String CustomerID = (String) session.getAttribute("id");
-
-	int CategoryID = 1;
-  	Class.forName("com.mysql.jdbc.Driver");
-   	Connection conn = DriverManager.getConnection("jdbc:mysql://localhost:3306/project","root","root");
-   	Statement stmt = conn.createStatement();
-   	String sqlstr = "SELECT * FROM food WHERE CategoryID = " + CategoryID;
-   	stmt = conn.prepareStatement(sqlstr);
-   	ResultSet rset = stmt.executeQuery(sqlstr);
-%>
 <script>
-   function starBtn(){
-      alert('즐겨찾는 반찬에 추가되었습니다.');
+   function deleteBtn(){
+      alert('즐겨찾는 반찬에서 삭제되었습니다.');
    }
    
    function cartBtn(){
 	   alert('장바구니에 추가되었습니다.');
    }
-</script>
-<%-- 여기 바로 밑 div가 육류 --%>
+</script>	
+
+<%
+   Class.forName("com.mysql.jdbc.Driver");
+   Connection conn = DriverManager.getConnection("jdbc:mysql://localhost:3306/project","root","root");
+   Statement foodStmt = conn.createStatement();
+   String CustomerID = (String) session.getAttribute("id");
+   String starStr = "SELECT * FROM Star WHERE UserID ='"+ CustomerID+"'";
+   Statement starStmt= conn.createStatement();
+   starStmt = conn.prepareStatement(starStr);
+   ResultSet starRset = starStmt.executeQuery(starStr);
+   ResultSet foodRset = null;
+   
+	
+	
+	   
+  
+   %>
+
 <div class="container">    
     <div class="factor text-center">
         <row>
-        <%while(rset.next())
-        {%>
+        <%while(starRset.next())
+        {
+        	int starFoodID = starRset.getInt("foodID");
+     	   	int StarID = starRset.getInt("starID");
+        	String foodStr = "SELECT * FROM Food WHERE foodID = "+ starFoodID;
+        	foodStmt = conn.prepareStatement(foodStr);
+        	foodRset = foodStmt.executeQuery(foodStr);   	
+        
+        %>
+        
             <div class="col-xs-4 ">
 			 <%
-		   		String foodName = rset.getString("foodName");
-		 		int foodPrice = rset.getInt("foodPrice");
-		 		String foodID = rset.getString("foodID");
-		 		
-				String foodImage = rset.getString("foodImage"); %>
+			 	if(foodRset.next() != false){
+		   		String foodName = foodRset.getString("foodName");
+		 		int foodPrice = foodRset.getInt("foodPrice");
+		 		String foodID = foodRset.getString("foodID");
+				String foodImage = foodRset.getString("foodImage"); %>
 				<img src = <%=foodImage %> width = "200px" height="auto" align="middle"><br/>
 				<p><%= foodName  %></p>
 		  		<p><%= foodPrice %></p>
@@ -147,106 +159,29 @@
                 <form action = "Box.jsp" method="post" style = "display:inline">
 					<input type="hidden" name = "foodID"  value="<%= foodID %>" >
 			  		<input type="hidden" name = "foodPrice"  value="<%= foodPrice %>" >
-			  		<input onclick="javascript:cartBtn()"type="Image" name = "Cart" value="선택하기" src = "select.png" width = 40 >
+			  		<input onclick="javascript:cartBtn()" type="Image" name = "Cart" value="선택하기" src = "select.png" width = 40 >
 		  		</form>
-		  		<form action = "StarAdd.jsp" method="post" style = "display:inline">
+		  		<form action = "StarDelete.jsp" method="post" style = "display:inline">
 					<input type="hidden" name = "foodID"  value="<%= foodID %>" >
-					<input type="hidden" name = "customerID"  value="<%= CustomerID %>" >
-					<input onclick="javascript:starBtn()"type="Image" name = "Star" value="즐겨찾기" src = "star.png" width = 40 >
-				</form>
+					<input type="hidden" name = "starID"  value="<%= StarID %>" >
+			  		<input onclick="javascript:deleteBtn()" type="Image" name = "Cart" value="선택하기" src = "delete.png" width = 40 >
+		  		</form>
+		  		
             </div>
-            <%} %>
+            <%} 
+            }%>
 			
             </div>
         </row>
         
     </div>
-    
-    <%
-	CategoryID += 1;
-   sqlstr = "SELECT * FROM food WHERE CategoryID = " + CategoryID;
-   stmt = conn.prepareStatement(sqlstr);
-   rset = stmt.executeQuery(sqlstr);
-	%>
-
-<%-- 여기 바로 밑 div가 채소 --%>
-    <div class="container">    
-    <div class="factor text-center">
-        <row>
-        <%while(rset.next())
-        {%>
-            <div class="col-xs-4 ">
-			 <%
-		   		String foodName = rset.getString("foodName");
-		 		int foodPrice = rset.getInt("foodPrice");
-				String foodImage = rset.getString("foodImage");
-				String foodID = rset.getString("foodID");%>
-				<img src = <%=foodImage %> width = "200px" height="auto" align="middle"><br/>
-				<p><%= foodName  %></p>
-		  		<p><%= foodPrice %></p>
-
-                <form action = "Box.jsp" method="post" style = "display:inline">
-					<input type="hidden" name = "foodID"  value="<%= foodID %>" >
-			  		<input type="hidden" name = "foodPrice"  value="<%= foodPrice %>" >
-			  		<input onclick="javascript:cartBtn()" type="Image" name = "Cart" value="선택하기" src = "select.png" width = 40 >
-		  		</form>
-		  		<form action = "StarAdd.jsp" method="post" style = "display:inline">
-					<input type="hidden" name = "foodID"  value="<%= foodID %>" >
-					<input type="hidden" name = "customerID"  value="<%= CustomerID %>" >
-					<input onclick="javascript:starBtn()" type="Image" name = "Star" value="즐겨찾기" src = "star.png" width = 40 >
-				</form>
-            </div>
-            <%} %>
-			
-            </div>
-        </row>
-    </div>
-    
-    <%
-	CategoryID += 1;
-   sqlstr = "SELECT * FROM food WHERE CategoryID = " + CategoryID;
-   stmt = conn.prepareStatement(sqlstr);
-   rset = stmt.executeQuery(sqlstr);
-	%>
-
-<%-- 여기 바로 밑 div가 해산물 --%>
-    <div class="container">    
-    <div class="factor text-center">
-        <row>
-        <%while(rset.next())
-        {%>
-            <div class="col-xs-4 ">
-			 <%
-		   		String foodName = rset.getString("foodName");
-		 		int foodPrice = rset.getInt("foodPrice");
-		 		String foodID = rset.getString("foodID");
-				String foodImage = rset.getString("foodImage"); %>
-				<img src = <%=foodImage %> width = "200px" height="auto" align="middle"><br/>
-				<p><%= foodName  %></p>
-		  		<p><%= foodPrice %></p>
-
-                <form action = "Box.jsp" method="post" style = "display:inline">
-					<input type="hidden" name = "foodID"  value="<%= foodID %>" >
-			  		<input type="hidden" name = "foodPrice"  value="<%= foodPrice %>" >
-			  		<input onclick="javascript:cartBtn()" type="Image" name = "Cart" value="선택하기" src = "select.png" width = 40 >
-		  		</form>
-		  		<form action = "StarAdd.jsp" method="post" style = "display:inline">
-					<input type="hidden" name = "foodID"  value="<%= foodID %>" >
-					<input type="hidden" name = "customerID"  value="<%= CustomerID %>" >
-					<input onclick="javascript:starBtn()" type="Image" name = "Star" value="즐겨찾기" src = "star.png" width = 40 >
-				</form>
-            </div>
-            <%} %>
-			
-            </div>
-        </row>
-    </div>
-    
-    
-     <%	rset.close();
-		stmt.close();
+    <%	
+   		starRset.close();
+		starStmt.close();
 		conn.close(); %>
-		    
+    
+    
+    
 <footer class="container">
   <row>
       <div class="col-md-8">
