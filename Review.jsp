@@ -94,66 +94,151 @@
     </div>
 </div>
 
-<%
-Class.forName("com.mysql.jdbc.Driver");
-Connection conn = DriverManager.getConnection("jdbc:mysql://localhost:3306/project","root","1234");
-String sqlstr = "SELECT * FROM review";
-Statement stmt = conn.createStatement();
-PreparedStatement stmt2 = null;
-PreparedStatement stmt3 = null;
-stmt = conn.prepareStatement(sqlstr);
-ResultSet rset = stmt.executeQuery(sqlstr);
-ResultSet rset2 = null;
-ResultSet rset3 = null;
-
-while(rset.next()){
-	String ReviewContent = rset.getString("ReviewContent");
-	int ReviewID = rset.getInt("ReviewID");
-	Date day = rset.getDate("ReviewDate");
-	int CartID = rset.getInt("CartID");
-
-	String sqlstr2 = "SELECT * FROM cart WHERE CartID=" + CartID;
-	stmt2 = conn.prepareStatement(sqlstr2);
-
-	rset2 = stmt2.executeQuery(sqlstr2);
-	rset2.next();
-	String userID = rset2.getString("CustomerID");
-	int boxID = rset2.getInt("BoxID");
-
-	String sqlstr3 = "SELECT * FROM box WHERE BoxID=" + boxID;
-	stmt3 = conn.prepareStatement(sqlstr3);
-
-	rset3 = stmt3.executeQuery(sqlstr3);
-	rset3.next();
-	int totalPrice = rset3.getInt("TotalPrice");
-%>
-
-
 <div class="container">   
     <p class="review-head">"User's Review"</p>
         <row class="Box">
-            <div class="col-xs-4 Box text-center">
-                <img src="LunchBoxLogo.png" height="120px"/><br>
-            </div>
-            <div class="col-xs-8" style="height: 200px;">
-                <h4>
-                	<%=userID %>
-                </h4>
-                <p>$ Total Price: <%=totalPrice %></p>
-                <p>주문 날짜: <%=day %></p>
-                <p> <%= ReviewContent %></p>
-            </div>
-        </row>
         
-        
-     <%	
-     	rset2.close();
-     	rset3.close();
-		stmt.close();
-		stmt2.close();
-		stmt3.close();} 
-		conn.close();
-		rset.close(); %>
+<%
+	Class.forName("com.mysql.jdbc.Driver");
+	Connection conn = DriverManager.getConnection("jdbc:mysql://localhost:3306/project","root","1234");
+	String sqlstr = "SELECT * FROM review";
+	Statement stmt = conn.createStatement();
+	PreparedStatement stmt2 = null;
+	PreparedStatement stmt3 = null;
+	stmt = conn.prepareStatement(sqlstr);
+	ResultSet rset = stmt.executeQuery(sqlstr);
+	ResultSet rset2 = null;
+	ResultSet rset3 = null;
+	int food1ID = 0;
+	int food2ID = 0;
+	int food3ID = 0;
+	int food4ID = 0;   
+	int food5ID = 0;
+	int food6ID = 0;
+	int boxTotalPrice = 0;
+	
+	
+	while(rset.next()){
+	   String ReviewContent = rset.getString("ReviewContent");
+	   int ReviewID = rset.getInt("ReviewID");
+	   Date day = rset.getDate("ReviewDate");
+	   int CartID = rset.getInt("CartID");
+	
+	   String sqlstr2 = "SELECT * FROM cart WHERE CartID=" + CartID;
+	   stmt2 = conn.prepareStatement(sqlstr2);
+	
+	   rset2 = stmt2.executeQuery(sqlstr2);
+	   rset2.next();
+	   String userID = rset2.getString("CustomerID");
+	   int boxID = rset2.getInt("BoxID");
+	
+	   String sqlstr3 = "SELECT * FROM box WHERE BoxID=" + boxID;
+	   stmt3 = conn.prepareStatement(sqlstr3);
+	
+	   rset3 = stmt3.executeQuery(sqlstr3);
+	   
+	   if(rset3.next() != false){
+	      
+	      food1ID = rset3.getInt("food1ID");
+	      food2ID = rset3.getInt("food2ID");
+	      food3ID = rset3.getInt("food3ID");
+	      food4ID = rset3.getInt("food4ID");   
+	      food5ID = rset3.getInt("food5ID");
+	      food6ID = rset3.getInt("food6ID");
+	      boxTotalPrice = rset3.getInt("totalPrice");
+	
+	      Statement foodStmt = null;
+	      String selectFoodStr;
+	      ResultSet foodRset = null;
+	      String FoodName1 = null;
+	      String FoodName2 = null;
+	      String FoodName3 = null;
+	      String FoodName4 = null;
+	      String FoodName5 = null;
+	      String FoodName6 = null;
+	      
+	      String FoodID;
+	      if(food1ID != 0){
+	         
+	         selectFoodStr = "SELECT * FROM Food WHERE foodID =" + food1ID;
+	         foodStmt = conn.prepareStatement(selectFoodStr);   
+	         foodRset = foodStmt.executeQuery(selectFoodStr);
+	         foodRset.last();               
+	         FoodName1 = foodRset.getString("foodName");
+	   
+	      }
+	      if(food2ID != 0){
+	         
+	         selectFoodStr = "SELECT * FROM Food WHERE foodID =" + food2ID;
+	         foodStmt = conn.prepareStatement(selectFoodStr);   
+	         foodRset = foodStmt.executeQuery(selectFoodStr);
+	         foodRset.last();   
+	         FoodName2 = foodRset.getString("foodName");
+	
+	      }
+	      if(food3ID != 0){
+	         
+	         selectFoodStr = "SELECT * FROM Food WHERE foodID =" + food3ID;
+	         foodStmt = conn.prepareStatement(selectFoodStr);   
+	         foodRset = foodStmt.executeQuery(selectFoodStr);
+	         foodRset.last();   
+	         FoodName3 = foodRset.getString("foodName");
+	
+	      }
+	      if(food4ID != 0){
+	         
+	         selectFoodStr = "SELECT * FROM Food WHERE foodID =" + food4ID;
+	         foodStmt = conn.prepareStatement(selectFoodStr);   
+	         foodRset = foodStmt.executeQuery(selectFoodStr);
+	         foodRset.last();   
+	         FoodName4 = foodRset.getString("foodName");
+	
+	      }
+	      if(food5ID != 0){
+	         
+	         selectFoodStr = "SELECT * FROM Food WHERE foodID =" + food5ID;
+	         foodStmt = conn.prepareStatement(selectFoodStr);   
+	         foodRset = foodStmt.executeQuery(selectFoodStr);
+	         foodRset.last();   
+	         FoodName5 = foodRset.getString("foodName");
+	
+	      }
+	      if(food6ID != 0){
+	         
+	         selectFoodStr = "SELECT * FROM Food WHERE foodID =" + food6ID;
+	         foodStmt = conn.prepareStatement(selectFoodStr);   
+	         foodRset = foodStmt.executeQuery(selectFoodStr);
+	         foodRset.last();   
+	         FoodName6 = foodRset.getString("foodName");
+	
+	      } %>
+	    
+	  <div class="col-xs-4 Box text-center">
+	                <img src="LunchBoxLogo.png" height="120px"/><br>
+	            </div>
+	            <div class="col-xs-8" style="height: 200px;">
+	                <h4>
+	                   <%=userID %>
+	                </h4>
+	                <p><% if(FoodName1!=null){ out.println(FoodName1); }
+	                       if(FoodName2!=null){ out.println(FoodName2); }
+	                       if(FoodName3!=null){ out.println(FoodName3); }
+	                       if(FoodName4!=null){ out.println(FoodName4); }
+	                       if(FoodName5!=null){ out.println(FoodName5); }
+	                       if(FoodName6!=null){ out.println(FoodName6); }%>             
+	                     </p>
+	                <p>$ Total Price: <%=boxTotalPrice %></p>
+	                <p>주문 날짜: <%=day %></p>
+	                <p> <%= ReviewContent %></p>
+	            </div>
+	        </row>
+	        
+		     <%   
+		      }}
+				rset.close();
+				conn.close();
+		%>
+           
            
     
 </div>
