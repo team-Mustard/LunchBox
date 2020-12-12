@@ -195,7 +195,6 @@ String BookName;
 while(bookRset.next()){
    
    bookCartID = bookRset.getInt("CartID");
-   
    String selectCartStr = "SELECT * FROM Cart WHERE CartID = "+ bookCartID;
    Statement cartStmt = conn.createStatement();
    cartStmt = conn.prepareStatement(selectCartStr);
@@ -212,6 +211,7 @@ while(bookRset.next()){
    if(cartCustomerID.equals(CustomerID)){
       
       BookName = bookRset.getString("BookName");
+      cartBookID = bookRset.getInt("BookID");
       int cartBoxID = cartRset.getInt("BoxID");
       Statement boxStmt = conn.createStatement();
       String selectBoxStr = "SELECT * FROM Box WHERE BoxID = "+ cartBoxID;
@@ -255,7 +255,7 @@ while(bookRset.next()){
                   <input onclick="javascript:cartBtn()" type="Image" name = "Select" value="선택하기" src = "select.png" width = 40 >
                </form>
                <form  action = "BookmarkDelete.jsp" method="post" style = "display:inline">
-                  <input type="hidden" name = "bookID"  value="<%= cartBoxID %>" >
+                  <input type="hidden" name = "bookID"  value="<%= cartBookID %>" >
                   <input onclick="javascript:deleteBtn()"type="Image" name = "Delete" value="삭제하기" src = "delete.png" width = 40 >
                </form>
                     <% if(food1ID != 0){
